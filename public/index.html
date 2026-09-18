@@ -4,77 +4,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>NodeLab - Login & Signup</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>NodeLab</h1>
+    <div class="page-container">
 
-    <!-- Sign Up -->
-    <section>
-        <h2>Sign Up</h2>
-
-        <form id="signupForm">
-
-            <input
-                type="text"
-                id="signupName"
-                placeholder="Name"
-                required
-            >
-
-            <input
-                type="email"
-                id="signupEmail"
-                placeholder="Email"
-                required
-            >
-
-            <input
-                type="password"
-                id="signupPassword"
-                placeholder="Password"
-                required
-            >
-
-            <button type="submit">Sign Up</button>
-
-        </form>
-
-        <p id="signupMessage"></p>
-    </section>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">Node<span>Lab</span></div>
+            <p>User Registration & Authentication</p>
+        </header>
 
 
-    <hr>
+        <!-- Main Content -->
+        <main class="auth-container">
+
+            <!-- Sign Up Card -->
+            <section class="auth-card">
+
+                <div class="card-icon">
+                    👤
+                </div>
+
+                <h2>Create Account</h2>
+
+                <p class="card-description">
+                    Sign up to create your NodeLab account.
+                </p>
+
+                <form id="signupForm">
+
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="signupName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
 
 
-    <!-- Login -->
-    <section>
-        <h2>Log In</h2>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
 
-        <form id="loginForm">
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
 
-            <input
-                type="email"
-                id="loginEmail"
-                placeholder="Email"
-                required
-            >
 
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Password"
-                required
-            >
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
 
-            <button type="submit">Log In</button>
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            placeholder="Create a password"
+                            required
+                        >
+                    </div>
 
-        </form>
 
-        <p id="loginMessage"></p>
-    </section>
+                    <button type="submit" class="btn">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p id="signupMessage" class="message"></p>
+
+            </section>
+
+
+            <!-- Login Card -->
+            <section class="auth-card">
+
+                <div class="card-icon">
+                    🔐
+                </div>
+
+                <h2>Welcome Back</h2>
+
+                <p class="card-description">
+                    Log in to access your dashboard.
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+
+                    <button type="submit" class="btn login-btn">
+                        Log In
+                    </button>
+
+                </form>
+
+                <p id="loginMessage" class="message"></p>
+
+            </section>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 NodeLab • Local Node.js Authentication System</p>
+        </footer>
+
+    </div>
 
 
     <script>
@@ -160,10 +229,8 @@
 
                 if (response.ok) {
 
-                    // Store user's name
                     localStorage.setItem("userName", data.name);
 
-                    // Go to dashboard
                     window.location.href = "dashboard.html";
                 }
 
