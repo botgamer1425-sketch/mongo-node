@@ -1,3 +1,6 @@
+
+require("dotenv").config();
+
 const express = require("express");
 const fs = require("fs");
 const EventEmitter = require("events");
@@ -16,16 +19,16 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ===============================
-// MongoDB Connection
+// MongoDB Atlas Connection
 // ===============================
 
 mongoose
-    .connect("mongodb://127.0.0.1:27017/myapp")
+    .connect(process.env.MONGODB_URI)
     .then(() => {
-        console.log("MongoDB connected successfully");
+        console.log("MongoDB Atlas connected successfully");
     })
     .catch((error) => {
-        console.error("MongoDB connection error:", error);
+        console.error("MongoDB connection error:", error.message);
     });
 
 // ===============================
@@ -118,9 +121,8 @@ app.post("/signup", async (req, res) => {
         res.json({
             message: "Registration successful!"
         });
-
     } catch (error) {
-        console.error("Signup error:", error);
+        console.error("Signup error:", error.message);
 
         res.status(500).json({
             message: "Server error during registration."
@@ -170,9 +172,8 @@ app.post("/login", async (req, res) => {
             message: "Login successful!",
             name: user.name
         });
-
     } catch (error) {
-        console.error("Login error:", error);
+        console.error("Login error:", error.message);
 
         res.status(500).json({
             message: "Server error during login."
